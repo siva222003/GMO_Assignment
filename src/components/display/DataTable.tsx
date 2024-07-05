@@ -5,9 +5,10 @@ import { columns } from "../../constants";
 
 interface DataTableProps {
   posts: PostType[];
+  loading: boolean;
 }
 
-const DataTable = ({ posts }: DataTableProps) => {
+const DataTable = ({ posts ,loading}: DataTableProps) => {
   return (
     <Box sx={{ height: 700, width: "100%", boxShadow: 1 }}>
       <DataGrid
@@ -23,6 +24,7 @@ const DataTable = ({ posts }: DataTableProps) => {
         }}
         pageSizeOptions={[5, 10, 15, 20]}
         disableRowSelectionOnClick
+        loading={loading}
       />
     </Box>
   );

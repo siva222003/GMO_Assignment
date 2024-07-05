@@ -1,30 +1,23 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { checkData } from "../helpers";
-import axios from "axios";
-import { PostType } from "../types";
 import DataTable from "../components/display/DataTable";
 import { Box, Typography } from "@mui/material";
 import Departments from "../components/display/Departments";
+import useFetchPosts from "../hooks/useFetchPosts";
 
 const Display = () => {
   const navigate = useNavigate();
 
-  const [posts, setPosts] = useState<PostType[]>([]);
+  const { posts, loading } = useFetchPosts();
 
   useEffect(() => {
     const filled = checkData();
 
     if (!filled) {
-      navigate("/");
+      navigate("/", { state: { showAlert: true } });
       return;
     }
-
-    const fetchData = async () => {
-      const res = await axios.get<PostType[]>(" https://jsonplaceholder.typicode.com/posts");
-      setPosts(res.data);
-    };
-    fetchData();
   }, [navigate]);
 
   return (
@@ -33,7 +26,7 @@ const Display = () => {
         Posts
       </Typography>
 
-      <DataTable posts={posts} />
+      <DataTable posts={posts} loading={loading} />
 
       <Typography variant="h4" my={3} fontFamily="monospace">
         Departments

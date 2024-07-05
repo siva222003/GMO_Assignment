@@ -1,12 +1,29 @@
 import { Route, Routes } from "react-router-dom";
-import Form from "./pages/Form";
-import Display from "./pages/Display";
+import { lazy, Suspense } from "react";
+import Loader from "./components/spinners/Loader";
+
+const Form = lazy(() => import("./pages/Form"));
+const Display = lazy(() => import("./pages/Display"));
 
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<Form />} />
-      <Route path="/display" element={<Display />} />
+      <Route
+        path="/"
+        element={
+          <Suspense fallback={<Loader />}>
+            <Form />
+          </Suspense>
+        }
+      />
+      <Route
+        path="/display"
+        element={
+          <Suspense fallback={<Loader />}>
+            <Display />
+          </Suspense>
+        }
+      />
     </Routes>
   );
 }

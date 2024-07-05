@@ -21,8 +21,8 @@ export default function RouterBreadcrumbs() {
   } = useDepartments();
 
   return (
-    <Box sx={{ display: "flex", flexDirection: "column", width: 360, mb: 20 }}>
-      <Box component="nav" aria-label="mailbox folders">
+    <Box sx={{ display: "flex", flexDirection: "column", width: 360, mb: 20 ,boxShadow : 1}}>
+      <Box component="nav"  aria-label="mailbox folders">
         <List>
           {departments.map((dept, index) => (
             <React.Fragment key={index}>
@@ -33,7 +33,7 @@ export default function RouterBreadcrumbs() {
                     onClick={(e) => handleDepartmentClick(e, dept.department)}
                   />
                 </ListItemIcon>
-                <ListItemText sx={{ fontFamily: "monospace" }} primary={dept.department} />
+                <ListItemText primaryTypographyProps={{ fontFamily: "monospace" }} primary={dept.department} />
                 {openStates[dept.department] ? <ExpandLess /> : <ExpandMore />}
               </ListItemButton>
               <Collapse in={openStates[dept.department]} timeout="auto" unmountOnExit>
@@ -46,7 +46,7 @@ export default function RouterBreadcrumbs() {
                           onClick={() => handleSubDepartmentClick(dept.department, subDept)}
                         />
                       </ListItemIcon>
-                      <ListItemText sx={{ fontFamily: "monospace" }} primary={subDept} />
+                      <ListItemText primaryTypographyProps={{ fontFamily: "monospace" }} primary={subDept} />
                     </ListItemButton>
                   ))}
                 </List>

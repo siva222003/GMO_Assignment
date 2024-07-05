@@ -17,7 +17,7 @@ const Input = ({ label, name, value, handleChange, error }: InputProps) => {
       onChange={(e) => handleChange(e)}
       error={!!error}
       helperText={error}
-      fullWidth
+      sx={{ width : 300}}
     />
   );
 };
