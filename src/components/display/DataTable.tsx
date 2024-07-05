@@ -9,11 +9,11 @@ interface DataTableProps {
 
 const DataTable = ({ posts }: DataTableProps) => {
   return (
-    <Box sx={{ height: 700, width: "100%",boxShadow : 1}}>
+    <Box sx={{ height: 700, width: "100%", boxShadow: 1 }}>
       <DataGrid
         rows={posts}
         columns={columns}
-        sx={{ fontFamily : "monospace" }}
+        sx={{ fontFamily: "monospace" }}
         initialState={{
           pagination: {
             paginationModel: {
@@ -21,7 +21,7 @@ const DataTable = ({ posts }: DataTableProps) => {
             },
           },
         }}
-        pageSizeOptions={[5]}
+        pageSizeOptions={[5, 10, 15, 20]}
         disableRowSelectionOnClick
       />
     </Box>

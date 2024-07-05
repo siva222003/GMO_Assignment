@@ -10,3 +10,16 @@ export type PostType = {
   title: string;
   body: string;
 };
+
+export type CollapseItemsType = {
+  [key: string]: boolean;
+};
+
+export type CheckedItemsType = {
+  [key: string]: {
+    checked: boolean;
+    subDepartments: {
+      [key: string]: boolean;
+    };
+  };
+};
