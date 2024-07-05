@@ -74,13 +74,19 @@ const Form = () => {
             display: "flex",
             flexDirection: "column",
             gap: 2,
-            px:5,
+            px: 5,
             py: 4,
             border: "1px solid #ccc",
             borderRadius: 2,
           }}
         >
-          <Typography variant="h5" component="h2" textAlign="center" gutterBottom>
+          <Typography
+            variant="h5"
+            fontFamily="monospace"
+            component="h2"
+            textAlign="center"
+            gutterBottom
+          >
             Personal Details
           </Typography>
 
@@ -91,10 +97,22 @@ const Form = () => {
             onConfirm={onConfirm}
           />
 
-          <Button type="submit" variant="contained" color="primary" fullWidth>
+          <Button
+            sx={{ fontFamily: "monospace" }}
+            type="submit"
+            variant="contained"
+            color="primary"
+            fullWidth
+          >
             Submit
           </Button>
-          <Button onClick={clearForm} variant="contained" color="error" fullWidth>
+          <Button
+            sx={{ fontFamily: "monospace" }}
+            onClick={clearForm}
+            variant="contained"
+            color="error"
+            fullWidth
+          >
             Reset
           </Button>
         </Box>
