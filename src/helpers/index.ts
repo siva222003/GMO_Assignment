@@ -17,6 +17,7 @@ export const validateForm = (data: FormType) => {
   return errors;
 };
 
+
 /*-- Add item to LocalStorage --*/
 export const setItem = (key: string, value: FormType) => {
   try {
@@ -28,13 +29,23 @@ export const setItem = (key: string, value: FormType) => {
   }
 };
 
-/*-- Get item from LocalStorage --*/
-export const getItem = (key: string) => {
+
+/*-- Check data stored in LocalStorage and return a boolean --*/
+export const checkData = () => {
   try {
-    const value = localStorage.getItem(key);
-    return value ? JSON.parse(value) : null;
+    const value = localStorage.getItem("data");
+
+    if (!value) return false;
+
+    const parsedData = JSON.parse(value);
+
+    if (!parsedData.name || !parsedData.phone || !parsedData.email) {
+      return false;
+    }
+
+    return true;
   } catch (error) {
     console.error(error);
-    return null;
+    return false;
   }
 };
